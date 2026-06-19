@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre del Lote">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
@@ -23,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Medida (m²)">
+            android:hint="Medida (m2)">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etArea"
                 android:layout_width="match_parent"
@@ -35,13 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Fecha de Creación">
+            android:hint="Fecha de Creacion">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true" />
+                android:clickable="true"
+                android:focusable="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -55,8 +58,8 @@
             android:id="@+id/tvPhotoPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="No se ha seleccionado foto" />
+            android:text="No se ha seleccionado foto"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnSelectVideo"
@@ -69,8 +72,8 @@
             android:id="@+id/tvVideoPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="No se ha seleccionado video" />
+            android:text="No se ha seleccionado video"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnSave"

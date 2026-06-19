@@ -16,6 +16,7 @@ class PastureAdapter(
         val tvName: TextView = view.findViewById(R.id.tvName)
         val tvArea: TextView = view.findViewById(R.id.tvArea)
         val tvDate: TextView = view.findViewById(R.id.tvDate)
+        val tvMedia: TextView = view.findViewById(R.id.tvMedia)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PastureViewHolder {
@@ -25,9 +26,13 @@ class PastureAdapter(
 
     override fun onBindViewHolder(holder: PastureViewHolder, position: Int) {
         val pasture = pastures[position]
+        val hasPhoto = if (pasture.photoUri.isNullOrBlank()) "Foto: no" else "Foto: si"
+        val hasVideo = if (pasture.videoUri.isNullOrBlank()) "Video: no" else "Video: si"
+
         holder.tvName.text = pasture.name
-        holder.tvArea.text = "${pasture.area} m²"
-        holder.tvDate.text = pasture.creationDate
+        holder.tvArea.text = "${pasture.area} m2"
+        holder.tvDate.text = "Creado: ${pasture.creationDate}"
+        holder.tvMedia.text = "$hasPhoto | $hasVideo"
 
         holder.itemView.setOnClickListener { onItemClick(pasture) }
         holder.itemView.setOnLongClickListener {

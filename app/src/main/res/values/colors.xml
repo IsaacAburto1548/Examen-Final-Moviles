@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Modern Color Palette -->
+    <color name="primary">#2E7D32</color>
+    <color name="primary_light">#60ad5e</color>
+    <color name="primary_dark">#005005</color>
+    <color name="secondary">#546e7a</color>
+    <color name="secondary_light">#819ca9</color>
+    <color name="secondary_dark">#29434e</color>
+
+    <!-- Rotation States -->
+    <color name="state_occupied">#C62828</color> <!-- Red -->
+    <color name="state_recovering">#EF6C00</color> <!-- Orange -->
+    <color name="state_available">#2E7D32</color> <!-- Green -->
+
+    <!-- Backgrounds & Surfaces -->
+    <color name="background">#F8F9FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider">#BDBDBD</color>
+</resources>

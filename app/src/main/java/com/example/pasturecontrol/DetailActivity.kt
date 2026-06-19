@@ -2,6 +2,7 @@ package com.example.pasturecontrol
 
 import android.app.DatePickerDialog
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -27,6 +28,7 @@ class DetailActivity : AppCompatActivity() {
     private var selectedPhotoUri: String? = null
     private var selectedVideoUri: String? = null
     private val calendar = Calendar.getInstance()
+    private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
     private val photoPicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -53,7 +55,12 @@ class DetailActivity : AppCompatActivity() {
         tvVideoPath = findViewById(R.id.tvVideoPath)
         btnSave = findViewById(R.id.btnSave)
 
-        currentPasture = intent.getSerializableExtra("pasture") as? Pasture
+        currentPasture = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getSerializableExtra("pasture", Pasture::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getSerializableExtra("pasture") as? Pasture
+        }
 
         currentPasture?.let {
             etName.setText(it.name)
@@ -64,6 +71,11 @@ class DetailActivity : AppCompatActivity() {
             selectedVideoUri = it.videoUri
             tvVideoPath.text = it.videoUri ?: "No se ha seleccionado video"
             btnSave.text = "Actualizar"
+            runCatching {
+                dateFormatter.parse(it.creationDate)?.let { date -> calendar.time = date }
+            }
+        } ?: run {
+            etDate.setText(dateFormatter.format(calendar.time))
         }
 
         etDate.setOnClickListener { showDatePicker() }
@@ -78,8 +90,7 @@ class DetailActivity : AppCompatActivity() {
             this,
             { _, year, month, dayOfMonth ->
                 calendar.set(year, month, dayOfMonth)
-                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                etDate.setText(sdf.format(calendar.time))
+                etDate.setText(dateFormatter.format(calendar.time))
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
