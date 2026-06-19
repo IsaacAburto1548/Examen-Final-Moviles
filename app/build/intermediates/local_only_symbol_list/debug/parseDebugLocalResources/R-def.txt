@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+id btnSave
+id btnSelectPhoto
+id btnSelectVideo
+id etArea
+id etDate
+id etName
+id fabAdd
+id recyclerView
+id tvArea
+id tvDate
+id tvName
+id tvPhotoPath
+id tvVideoPath
+layout activity_detail
+layout activity_main
+layout item_pasture
+mipmap ic_launcher
+mipmap ic_launcher_round
